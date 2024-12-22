@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock, Paper, Scissors</title>
+  </head>
+  <body>
+    <h1>Game Batu, Gunting, Kertas</h1>
+    <p>Ayo main game ini dan kalahkan kompouter, siapa paling jago?</p>
+
+    <button onclick="hasilGame('batu', pilihanKomputerRandom())">Batu</button>
+    <button onclick="hasilGame('gunting', pilihanKomputerRandom())">
+      Gunting
+    </button>
+    <button onclick="hasilGame('kertas', pilihanKomputerRandom())">
+      Kertas
+    </button>
+
+    <script>
+      function pilihanKomputerRandom() {
+        const random = Math.random();
+        const getAngka = Math.floor(random * 3) + 1;
+        let pilihanKomputer = "";
+
+        if (getAngka === 1) {
+          pilihanKomputer = "batu";
+        } else if (getAngka === 2) {
+          pilihanKomputer = "gunting";
+        } else if (getAngka === 3) {
+          pilihanKomputer = "kertas";
+        }
+
+        return pilihanKomputer;
+      }
+
+      function hasilGame(pilihanPlayer, pilihanKomputer) {
+        let hasil = "";
+        // let pilihanKomputer = pilihanKomputerRandom();
+
+        if (pilihanPlayer === "batu") {
+          if (pilihanKomputer === "batu") {
+            hasil = "seri";
+          } else if (pilihanKomputer === "gunting") {
+            hasil = "menang";
+          } else if (pilihanKomputer === "kertas") {
+            hasil = "kalah";
+          }
+        } else if (pilihanPlayer === "gunting") {
+          if (pilihanKomputer === "batu") {
+            hasil = "kalah";
+          } else if (pilihanKomputer === "gunting") {
+            hasil = "seri";
+          } else if (pilihanKomputer === "kertas") {
+            hasil = "menang";
+          }
+        } else if (pilihanPlayer === "kertas") {
+          if (pilihanKomputer === "batu") {
+            hasil = "menang";
+          } else if (pilihanKomputer === "gunting") {
+            hasil = "kalah";
+          } else if (pilihanKomputer === "kertas") {
+            hasil = "seri";
+          }
+        }
+
+        // if(hasil == "menang"){
+        //     score.menang = score.menang + 1
+        // } else if(hasil == "kalah"){
+        //     score.kalah = score.kalah + 1
+        // }else if(hasil == "seri"){
+        //     score.seri = score.seri + 1
+        // }
+
+        alert(
+          `kamu pilih: ${pilihanPlayer} vs komputer pilih: ${pilihanKomputer} \nhasil saat ini ${hasil}`
+        );
+
+        return hasil;
+      }
+
+      //   const pilihanKomputer = pilihanKomputerRandom()
+      //   const pilihanPlayer = 'gunting'
+
+      //   const hasil = hasilGame(pilihanPlayer, pilihanKomputer)
+    </script>
+  </body>
+</html>
