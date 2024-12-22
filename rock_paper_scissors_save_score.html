@@ -18,6 +18,12 @@
     </button>
 
     <script>
+      let score = {
+        menang: 0,
+        kalah: 0,
+        seri: 0,
+      };
+
       function pilihanKomputerRandom() {
         const random = Math.random();
         const getAngka = Math.floor(random * 3) + 1;
@@ -64,8 +70,16 @@
           }
         }
 
+        if (hasil == "menang") {
+          score.menang = score.menang + 1;
+        } else if (hasil == "kalah") {
+          score.kalah = score.kalah + 1;
+        } else if (hasil == "seri") {
+          score.seri = score.seri + 1;
+        }
+
         alert(
-          `kamu pilih: ${pilihanPlayer} vs komputer pilih: ${pilihanKomputer} \nhasil ${hasil}`
+          `kamu pilih: ${pilihanPlayer} vs komputer pilih: ${pilihanKomputer} \nhasil saat ini\nmenang: ${score.menang},\nkalah: ${score.kalah},\nseri: ${score.seri}`
         );
 
         return hasil;
