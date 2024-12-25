@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Method</title>
+</head>
+<body>
+    <script>
+        /*why we use object 
+        to separate function by the object (encapsulation)
+        example: object person -> profile()
+                object school -> listOfTeacher(), listOfStudent()
+                object user -> login(), register()
+        */
+
+        const person = {
+            name: "Akmalia", 
+            age: 17, 
+            nilai: [90, 100, 90], 
+            
+            introduce: function(){ //anonymus function
+                console.log(`Hello There!`)
+            },// method
+
+            isAdult: function isAdult(age){ //named function
+                console.log(age > 17)
+            },
+
+            total: function(){
+                //this is to access the object itself, when we in the inside of object
+
+                //console.log(person.name) //aku menggil diri sendiri padahal didalam
+                console.log(this.name) //sebaiknya kalau didalam object begini
+            }
+        }
+
+        //cara akses properti object
+        console.log(person.name)
+
+        //cara akses method object
+        person.isAdult(17)
+        person.introduce()
+        person.total()
+
+        //Built In Object (Object yang udh disediain JS)
+        console.log("Math: ", typeof Math)
+        console.log("Math.pow: ", typeof Math.pow)
+
+        console.log("Console: ", typeof console)
+        console.log("console.log: ", typeof console.log)
+
+        //convert object to JSON format 
+        // Why JSON? JSON are standart to transporting data between client (web) and server
+        const JSONPerson = JSON.stringify(person)
+        console.log("JSON person Object: ", JSONPerson);
+        
+        //localstorage => nyimpen data di dalam browser/web
+        //ini untuk simpan ke localStorage
+        localStorage.setItem("person", JSONPerson)
+        
+        //ini untuk ambil data dari local storage
+        const localPerson = localStorage.getItem("person")
+        const localPersonObject = JSON.parse(localPerson)
+        console.log("person name is", localPersonObject.name)
+
+        //hapus data dari localStorage
+        localStorage.removeItem("person")
+
+
+
+    </script>
+</body>
+</html>
