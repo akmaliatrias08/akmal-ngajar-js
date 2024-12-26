@@ -16,6 +16,7 @@
     <button onclick="hasilGame('kertas', pilihanKomputerRandom())">
       Kertas
     </button>
+    <button onclick="resetScore()">Reset</button>
 
     <script>
       let score = {
@@ -24,6 +25,18 @@
         seri: 0,
       };
 
+      //validasi apakah key score ada didalam localStorage
+      if(localStorage.getItem("score")){
+        score = JSON.parse(localStorage.getItem("score"))
+      }
+
+      function resetScore(){
+        localStorage.removeItem("score")
+        score.menang = 0
+        score.kalah = 0
+        score.seri = 0
+      }
+      
       function pilihanKomputerRandom() {
         const random = Math.random();
         const getAngka = Math.floor(random * 3) + 1;
@@ -42,7 +55,12 @@
 
       function hasilGame(pilihanPlayer, pilihanKomputer) {
         let hasil = "";
-        // let pilihanKomputer = pilihanKomputerRandom();
+
+        // if(!localStorage.getItem("score")){
+        //   score.menang = 0
+        //   score.kalah = 0
+        //   score.seri = 0
+        // }
 
         if (pilihanPlayer === "batu") {
           if (pilihanKomputer === "batu") {
@@ -77,6 +95,10 @@
         } else if (hasil == "seri") {
           score.seri = score.seri + 1;
         }
+
+        //simpan score ke localStorage
+        const scoreJson = JSON.stringify(score)
+        localStorage.setItem("score", scoreJson)
 
         alert(
           `kamu pilih: ${pilihanPlayer} vs komputer pilih: ${pilihanKomputer} \nhasil saat ini\nmenang: ${score.menang},\nkalah: ${score.kalah},\nseri: ${score.seri}`
