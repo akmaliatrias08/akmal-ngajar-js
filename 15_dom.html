@@ -6,12 +6,27 @@
     <title>DOM</title>
 </head>
 <body>
-    <button>Start</button>
-    <h2>Hello, World</h2>
+    <!-- 
+        <button>Start</button>
+        <h2>Hello, World</h2> 
+    -->
+
+    <!--
+        <button class="cls-world">World</button>
+        <button id="cls-hello">Hello</button>
+
+        <h1>Hello</h1>
+        <h2>Akmalia</h2>
+    -->
+
+    <p>YouTube Subscribe Button</p>
+    <button class="btn-subscribe" onclick="subscribe()">Subscribe</button>
+    <button>Like</button>
+
     <script>
         //jawaban challenge
-        document.body.innerHTML = '<button>Subscribe</button> <button>Like</button>'
-        document.title = "Youtube"
+        // document.body.innerHTML = '<button>Subscribe</button> <button>Like</button>'
+        // document.title = "Youtube"
 
         //document adalah built in object javascript
         //document isinya adalah file html dari web page kita
@@ -32,6 +47,28 @@
 
         //mereka memberi kita akses penuh untuk 
         //mengubah/mengkontrol isi didalam nya
+
+        // console.log(document.querySelector('button'))
+
+        //.querySelector memungkinkan kita mengambil hanya 1 tag html
+        // tapi harus pake nama class, dan dipanggil dengan . (titik)
+        // document.querySelector('.cls-world').innerHTML = "Like"
+        // document.querySelector('#cls-hello').innerHTML = "Subscribe"
+
+        // console.log(document.querySelector('#cls-hello'));
+        
+        // console.log(document.querySelector('h1'))
+        // console.log(document.querySelector('h2'))
+
+
+        function subscribe(){
+            if(document.querySelector('.btn-subscribe').innerHTML == 'Subscribe'){
+                document.querySelector('.btn-subscribe').innerHTML = 'Subscribed'
+            } else {
+                document.querySelector('.btn-subscribe').innerHTML = 'Subscribe'
+            }
+        }
+
 
     </script>
 </body>
