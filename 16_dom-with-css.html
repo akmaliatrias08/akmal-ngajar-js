@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM With CSS</title>
+    <style>
+        .css-btn-subscribe{
+            font-weight: 600;
+            color: white;
+            background-color: black;
+            border-radius: 15px;
+            padding: 10px 15px;
+            border: none;
+        }
+
+        .css-btn-subscribed{
+            background-color: gray;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <p>YouTube Subscribe Button</p>
+    <button class="btn-subscribe css-btn-subscribe " onclick="subscribe()">Subscribe</button>
+    <button>Like</button>
+    
+    <p>
+        Amazon Shipping Calculator <br />
+        Orders under $40 = +$10 shipping. <br />
+        Orders over $40 = FREE shipping. <br />
+    </p>
+    <input 
+        placeholder="Cost of order" 
+        class="input-cost-order" 
+        onkeydown="onEnterCalculate(event.key)">
+    <button 
+        onclick="calculateTotalCost()">
+    Calculate
+    </button>
+    <p class="total-cost"></p>
+
+    <script>
+        function subscribe(){
+            const buttonSubscribe = document.querySelector('.btn-subscribe') 
+
+            if(buttonSubscribe.innerHTML == 'Subscribe'){
+                buttonSubscribe.innerHTML = 'Subscribed'
+                buttonSubscribe.classList.add('css-btn-subscribed')
+            } else {
+                buttonSubscribe.innerHTML = 'Subscribe'
+                buttonSubscribe.classList.remove('css-btn-subscribed')
+            }
+        }
+
+        function onEnterCalculate(key){
+            if(key == "Enter"){
+                calculateTotalCost()
+            }
+        }
+        function calculateTotalCost(){
+            const inputElement = document.querySelector(".input-cost-order")
+            let orderCost = Number(inputElement.value) 
+            //sebenernya apapun value dari input akan selalu bertipa data "string"
+
+            if(orderCost < 40){
+                orderCost = orderCost + 10
+            }
+
+            document.querySelector('.total-cost').innerHTML = `$ ${orderCost}`
+        }
+
+    </script>
+</body>
+</html>
